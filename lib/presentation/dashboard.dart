@@ -1,6 +1,5 @@
 import 'package:criticine/data/moviesEntity.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_networkimage/provider.dart';
 import '../data/moviesService.dart';
 import 'package:http/http.dart' as http;
 
@@ -71,13 +70,13 @@ class MoviesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 1,
+        crossAxisCount: 2,
       ),
       itemCount: movies.length,
       itemBuilder: (context, index) {
         return Image.network(
           movies[index].posterUrlMovie,
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
           errorBuilder: (context, error, stackTrace) => new Icon(Icons.error),
         );
       },
