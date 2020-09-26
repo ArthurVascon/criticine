@@ -17,12 +17,13 @@ class MoviesDetails extends StatelessWidget {
         Container(
           width: 250.0,
           height: 270.0,
-          decoration: new BoxDecoration(
-            borderRadius: BorderRadius.circular(24.0),
-            image: DecorationImage(
-              image: new NetworkImage(posterUrlMovie),
-              fit: BoxFit.fill,
-            ),
+          child: Column(
+            children: <Widget>[
+              Image.network(
+                posterUrlMovie,
+                errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
+              )
+            ],
           ),
         ),
         Positioned(

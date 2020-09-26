@@ -20,7 +20,8 @@ class DashboardScreen extends StatelessWidget {
         body: FutureBuilder<List<MovieEntity>>(
           future: fetchMovies(http.Client()),
           builder: (context, snapshot) {
-            if (snapshot.hasError) {}
+            if (snapshot.hasError) {
+            }
             return snapshot.hasData
                 ? MoviesList(movies: snapshot.data)
                 : Center(child: CircularProgressIndicator());
