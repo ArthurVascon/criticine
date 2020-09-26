@@ -31,11 +31,13 @@ class MoviesDetails extends StatelessWidget {
           child: Material(
               color: Colors.white,
               elevation: 14.0,
-              borderRadius: BorderRadius.circular(24.0),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24.0),
+                  topRight: Radius.circular(24.0)),
               shadowColor: Color(0x802196F3),
               child: Container(
                 width: 230.0,
-                height: 150.0,
+                height: 160.0,
                 child: Column(
                   children: <Widget>[
                     SizedBox(height: 10.0),
@@ -50,24 +52,45 @@ class MoviesDetails extends StatelessWidget {
                                     fontWeight: FontWeight.bold))),
                       ),
                     ),
-                    SizedBox(height: 10.0),
+                    SizedBox(height: 20.0),
                     Container(
                         child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(voteAverageRate.toString() + " rate",
+                        Text("Nota: " + voteAverageRate.toString(),
+                            textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Color(0xffff6f00), fontSize: 16.0)),
-                        IconButton(
-                            icon: Icon(
-                              Icons.chevron_right,
-                              color: Color(0xffff6f00),
-                            ),
-                            onPressed: () {
-                              //Goto -> Movie Detail Page
-                            }),
+                                color: Color(0xffff6f00), fontSize: 20.0)),
                       ],
                     )),
+                    SizedBox(height: 6.0),
+                    Container(
+                      color: Color(0xEFFF6F00),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          // IconButton(
+                          //   icon: Icon(Icons.info_outline),
+                          //   color: Colors.white,
+                          //   onPressed: () {},
+                          // ),
+                          IconButton(
+                              splashRadius: 0.2,
+                              padding: EdgeInsets.only(
+                                left: 80,
+                                right: 80,
+                              ),
+                              icon: Icon(
+                                Icons.info_outline,
+                                color: Colors.white,
+                                size: 30.0,
+                              ),
+                              onPressed: () {
+                                //Goto -> Movrie Detail Page
+                              })
+                        ],
+                      ),
+                    )
                   ],
                 ),
               )),
