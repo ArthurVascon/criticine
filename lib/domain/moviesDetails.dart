@@ -16,11 +16,12 @@ class MoviesDetails extends StatelessWidget {
       child: Stack(children: <Widget>[
         Container(
           width: 250.0,
-          height: 270.0,
+          height: 350.0,
           child: Column(
             children: <Widget>[
               Image.network(
                 posterUrlMovie,
+                fit: BoxFit.fill,
                 errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
               )
             ],
@@ -47,6 +48,7 @@ class MoviesDetails extends StatelessWidget {
                       child: Container(
                         child: Center(
                             child: Text(titleMovie,
+                                maxLines: 1,
                                 style: TextStyle(
                                     color: Color(0xff07128a),
                                     fontSize: 22.0,
