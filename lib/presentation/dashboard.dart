@@ -10,18 +10,11 @@ class DashboardScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('Criticine App'),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
-            )
-          ],
         ),
         body: FutureBuilder<List<MovieEntity>>(
           future: fetchMovies(http.Client()),
           builder: (context, snapshot) {
-            if (snapshot.hasError) {
-            }
+            if (snapshot.hasError) {}
             return snapshot.hasData
                 ? MoviesList(movies: snapshot.data)
                 : Center(child: CircularProgressIndicator());

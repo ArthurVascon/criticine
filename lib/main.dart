@@ -1,3 +1,4 @@
+import './presentation/moviesDetailsScreen.dart';
 import 'package:flutter/material.dart';
 
 import './presentation/dashboard.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: DashboardScreen(),
+      routes: {MoviesDetailsScreen.routeName: (ctx) => MoviesDetailsScreen()},
     );
   }
 }

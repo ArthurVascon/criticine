@@ -1,4 +1,5 @@
 import 'package:criticine/data/moviesEntity.dart';
+import 'package:criticine/presentation/moviesDetailsScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,16 +16,23 @@ class MoviesDetails extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       child: Stack(children: <Widget>[
         Container(
-          width: 250.0,
-          height: 350.0,
-          child: Column(
-            children: <Widget>[
-              Image.network(
-                posterUrlMovie,
-                fit: BoxFit.fill,
-                errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
-              )
-            ],
+          width: 200,
+          height: 298,
+          child: Card(
+            elevation: 5,
+            child: Column(
+              children: <Widget>[
+                Image.network(posterUrlMovie,
+                    fit: BoxFit.fill, repeat: ImageRepeat.repeatY,
+                    errorBuilder: (context, error, stackTrace) {
+                  posterUrlMovie =
+                      'https://lh3.googleusercontent.com/proxy/lkAPEX89621AlfkndcJJewG43WfzvDNCVC4pTBZFDcO84rQVDN3Z0oNXUwLHX-3ZsNCyI5fDeQyf5_nuw2y674vxcz2ylJgtjUuHLRnBcgLMuw';
+                  return Image.network(
+                    posterUrlMovie,
+                  );
+                })
+              ],
+            ),
           ),
         ),
         Positioned(
@@ -33,9 +41,7 @@ class MoviesDetails extends StatelessWidget {
           child: Material(
               color: Colors.white,
               elevation: 14.0,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(24.0),
-                  topRight: Radius.circular(24.0)),
+              borderRadius: BorderRadius.all(Radius.circular(24)),
               shadowColor: Color(0x802196F3),
               child: Container(
                 width: 230.0,
@@ -47,12 +53,15 @@ class MoviesDetails extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                       child: Container(
                         child: Center(
-                            child: Text(titleMovie,
-                                maxLines: 1,
-                                style: TextStyle(
-                                    color: Color(0xff07128a),
-                                    fontSize: 22.0,
-                                    fontWeight: FontWeight.bold))),
+                            child: Text(
+                          titleMovie,
+                          maxLines: 1,
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        )),
                       ),
                     ),
                     SizedBox(height: 20.0),
@@ -63,12 +72,13 @@ class MoviesDetails extends StatelessWidget {
                         Text("Nota: " + voteAverageRate.toString(),
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Color(0xffff6f00), fontSize: 20.0)),
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 20.0)),
                       ],
                     )),
                     SizedBox(height: 6.0),
                     Container(
-                      color: Color(0xEFFF6F00),
+                      color: Theme.of(context).primaryColor,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
@@ -89,7 +99,16 @@ class MoviesDetails extends StatelessWidget {
                                 size: 30.0,
                               ),
                               onPressed: () {
-                                //Goto -> Movrie Detail Page
+                                Navigator.of(context).pushNamed(
+                                    MoviesDetailsScreen.routeName,
+                                    arguments: {
+                                      'id': index.toString(),
+                                      'voteAverageRate':
+                                          voteAverageRate.toString(),
+                                      'titleMovie': titleMovie.toString(),
+                                      'posterUrlMovie':
+                                          posterUrlMovie.toString()
+                                    });
                               })
                         ],
                       ),
