@@ -1,5 +1,5 @@
-import 'package:criticine/data/moviesEntity.dart';
-import 'package:criticine/presentation/moviesDetailsScreen.dart';
+import '../model/moviesEntity.dart';
+import '../widgets/moviesDetailsScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
