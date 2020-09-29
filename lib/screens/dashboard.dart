@@ -16,7 +16,9 @@ class DashboardScreen extends StatelessWidget {
           future: fetchMovies(http.Client()),
           builder: (context, snapshot) {
             //Se tiver erro ao pegar os dados, dispara isso.
-            if (snapshot.hasError) {}
+            if (snapshot.hasError) {
+              print("Erro pra pegar os dados");
+            }
             return snapshot.hasData
                 ? MoviesList(movies: snapshot.data)
                 : Center(child: CircularProgressIndicator());
@@ -39,8 +41,13 @@ class MoviesList extends StatelessWidget {
       ),
       itemCount: movies.length,
       itemBuilder: (context, index) {
-        return MoviesDetails(movies[index], movies[index].titleMovie,
-            movies[index].posterUrlMovie, movies[index].voteAverageMovie);
+        return MoviesDetails(
+            movies[index],
+            movies[index].titleMovie,
+            movies[index].posterUrlMovie,
+            movies[index].voteAverageMovie,
+            movies[index].releaseDate,
+            movies[index].genres);
       },
     );
   }

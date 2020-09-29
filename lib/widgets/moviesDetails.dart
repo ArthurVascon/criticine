@@ -1,5 +1,5 @@
 import '../model/moviesEntity.dart';
-import '../widgets/moviesDetailsScreen.dart';
+import '../screens/moviesDetailsScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +8,17 @@ class MoviesDetails extends StatelessWidget {
   String titleMovie;
   String posterUrlMovie;
   double voteAverageRate;
+  String releaseDate;
+  List<String> genresList;
+
   MoviesDetails(
-      this.index, this.titleMovie, this.posterUrlMovie, this.voteAverageRate);
+    this.index,
+    this.titleMovie,
+    this.posterUrlMovie,
+    this.voteAverageRate,
+    this.releaseDate,
+    this.genresList,
+  );
 
   Widget build(BuildContext context) {
     return Padding(
@@ -26,7 +35,7 @@ class MoviesDetails extends StatelessWidget {
                     fit: BoxFit.fill, repeat: ImageRepeat.repeatY,
                     errorBuilder: (context, error, stackTrace) {
                   posterUrlMovie =
-                      'https://lh3.googleusercontent.com/proxy/lkAPEX89621AlfkndcJJewG43WfzvDNCVC4pTBZFDcO84rQVDN3Z0oNXUwLHX-3ZsNCyI5fDeQyf5_nuw2y674vxcz2ylJgtjUuHLRnBcgLMuw';
+                      'https://imagensemoldes.com.br/wp-content/uploads/2020/06/Movie-Logo-Cinema-PNG.png';
                   return Image.network(
                     posterUrlMovie,
                   );
@@ -69,7 +78,7 @@ class MoviesDetails extends StatelessWidget {
                         child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("Nota: " + voteAverageRate.toString(),
+                        Text("Rate: " + voteAverageRate.toString(),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
@@ -107,7 +116,9 @@ class MoviesDetails extends StatelessWidget {
                                           voteAverageRate.toString(),
                                       'titleMovie': titleMovie.toString(),
                                       'posterUrlMovie':
-                                          posterUrlMovie.toString()
+                                          posterUrlMovie.toString(),
+                                      'releaseDate': releaseDate.toString(),
+                                      'genresList': genresList.toString(),
                                     });
                               })
                         ],

@@ -5,7 +5,6 @@ import 'dart:async';
 
 List<MovieEntity> parseMovies(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-
   return parsed.map<MovieEntity>((json) => MovieEntity.fromJson(json)).toList();
 }
 

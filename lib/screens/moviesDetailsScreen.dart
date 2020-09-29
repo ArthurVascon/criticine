@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class MoviesDetailsScreen extends StatelessWidget {
   static const routeName = '/movieDetails';
@@ -75,7 +76,7 @@ class MoviesDetailsScreen extends StatelessWidget {
                             size: 40, color: Theme.of(context).primaryColor),
                         SizedBox(height: 10),
                         Text(
-                          'Release',
+                          routeArgs['releaseDate'],
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -90,7 +91,9 @@ class MoviesDetailsScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Movies Genres: ',
+              'Movies Genres: ' +
+                  routeArgs['genresList']
+                      .substring(1, routeArgs['genresList'].length - 1),
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,

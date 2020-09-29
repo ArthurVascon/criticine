@@ -1,7 +1,6 @@
 import './screens/dashboard.dart';
-import 'widgets/moviesDetailsScreen.dart';
+import 'screens/moviesDetailsScreen.dart';
 import 'package:flutter/material.dart';
-
 
 void main() {
   runApp(MyApp());
